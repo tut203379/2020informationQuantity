@@ -3,7 +3,7 @@ import java.lang.*;
 
 public class Hello {
     public static void main(String[] args) {
-        System.out.println("hello..(B203378,若菜慶友)");
+        System.out.println("hello..Wakana(B203378)");
     }
 }
 
