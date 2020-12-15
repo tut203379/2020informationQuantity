@@ -77,7 +77,8 @@ public class Frequencer implements FrequencerInterface{
 
         else if (mySpace[i] > mySpace[j])
             return 1;*/
-                        
+        
+        //1文字ずつ辞書比較(ASCII)
         while(i < mySpace.length && j < mySpace.length) {
             if (mySpace[i] < mySpace[j]) {
                 return -1;
@@ -90,6 +91,9 @@ public class Frequencer implements FrequencerInterface{
             i++;
             j++;
         }
+
+        //どちらかがSpaceの末尾に到達した場合、
+        //先に末尾に到達した方(短い単語)を前にする
         if (i >= mySpace.length)
             return -1;
 
@@ -129,6 +133,8 @@ public class Frequencer implements FrequencerInterface{
         //   suffixArray[ 2]= 0:CBA
         // のようになるべきである。
         printSuffixArray();
+        
+        //バブルソート
         for (int j = mySpace.length-1; j > 0; j--) {
             for (int i = 0; i < j; i++) {
                 int tmp;
