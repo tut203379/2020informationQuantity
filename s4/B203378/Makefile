@@ -1,13 +1,13 @@
 all:
-	javac Hello.java -classpath "../.."
-	javac Frequencer.java -classpath "../.."
-	javac InformationEstimator.java -classpath "../.."
-	javac TestCase.java -classpath "../.."
+	javac -encoding UTF-8 Hello.java -classpath "../.."
+	javac -encoding UTF-8 Frequencer.java -classpath "../.."
+	javac -encoding UTF-8 InformationEstimator.java -classpath "../.."
+	javac -encoding UTF-8 TestCase.java -classpath "../.."
 
 # 利用する場合は s4.学籍番号/プログラム名 になるように書き換える
 run:
-	java -classpath "../.." s4.B203378/Hello
-#	java -classpath "../.." s4.B203378/Frequencer
+#	java -classpath "../.." s4.B203378/Hello
+	java -classpath "../.." s4.B203378/Frequencer
 #	java -classpath "../.." s4.B203378/InformationEstimator
 #	java -classpath "../.." s4.B203378/TestCase
 
