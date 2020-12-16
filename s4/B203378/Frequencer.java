@@ -77,27 +77,33 @@ public class Frequencer implements FrequencerInterface{
 
         else if (mySpace[i] > mySpace[j])
             return 1;*/
-
-        while(i > mySpace.length || j > mySpace.length) {
-            if (mySpace[i] < mySpace[j])
+        
+        //1文字ずつ辞書比較(ASCII)
+        while(i < mySpace.length && j < mySpace.length) {
+            if (mySpace[i] < mySpace[j]) {
                 return -1;
+            }
 
-            else if (mySpace[i] > mySpace[j])
+            else if (mySpace[i] > mySpace[j]) {
                 return 1;
+            }
 
             i++;
             j++;
         }
 
-        if (i > mySpace.length)
+        //どちらかがSpaceの末尾に到達した場合、
+        //先に末尾に到達した方(短い単語)を前にする
+        if (i >= mySpace.length)
             return -1;
 
-        else if (j > mySpace.length)
+        else if (j >= mySpace.length)
             return 1;
 
         // 
-        else                                         
+        else
             return 0; // この行は変更しなければいけない。 
+        
     }
 
     public void setSpace(byte []space) { 
@@ -127,12 +133,16 @@ public class Frequencer implements FrequencerInterface{
         //   suffixArray[ 2]= 0:CBA
         // のようになるべきである。
         printSuffixArray();
-        for (int i = 0; i < suffixArray.length; i++) {
-            int tmp;
-            if (suffixCompare(i, i+1) == 1) {
-                tmp = suffixArray[i];
-                suffixArray[i] = suffixArray[i+1];
-                suffixArray[i+1] = suffixArray[i];
+        
+        //バブルソート
+        for (int j = mySpace.length-1; j > 0; j--) {
+            for (int i = 0; i < j; i++) {
+                int tmp;
+                if (suffixCompare(suffixArray[i], suffixArray[i+1]) == 1) {
+                    tmp = suffixArray[i];
+                    suffixArray[i] = suffixArray[i+1];
+                    suffixArray[i+1] = tmp;
+                }
             }
         }
     }
@@ -297,12 +307,15 @@ public class Frequencer implements FrequencerInterface{
             frequencerObject = new Frequencer();
             frequencerObject.setSpace("ABC".getBytes());
             frequencerObject.printSuffixArray();
+            System.out.write('\n');
             frequencerObject = new Frequencer();
             frequencerObject.setSpace("CBA".getBytes());
             frequencerObject.printSuffixArray();
+            System.out.write('\n');
             frequencerObject = new Frequencer();
             frequencerObject.setSpace("HHH".getBytes());
             frequencerObject.printSuffixArray();
+            System.out.write('\n');
             frequencerObject = new Frequencer();
             frequencerObject.setSpace("Hi Ho Hi Ho".getBytes());
             frequencerObject.printSuffixArray();
