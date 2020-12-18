@@ -77,7 +77,7 @@ public class Frequencer implements FrequencerInterface{
 
         else if (mySpace[i] > mySpace[j])
             return 1;*/
-        
+
         //1文字ずつ辞書比較(ASCII)
         while(i < mySpace.length && j < mySpace.length) {
             if (mySpace[i] < mySpace[j]) {
@@ -100,16 +100,8 @@ public class Frequencer implements FrequencerInterface{
         else if (j >= mySpace.length)
             return 1;
 
-<<<<<<< HEAD
-        //
         else
             return 0; // この行は変更しなければいけない。
-=======
-        // 
-        else
-            return 0; // この行は変更しなければいけない。 
-        
->>>>>>> 913f7d2b2087cb03a0b9ef115a5cbb4c17e6b4ac
     }
 
     public void setSpace(byte []space) {
@@ -139,15 +131,12 @@ public class Frequencer implements FrequencerInterface{
         //   suffixArray[ 2]= 0:CBA
         // のようになるべきである。
         printSuffixArray();
-<<<<<<< HEAD
         for (int i = 0; i < suffixArray.length; i++) {
             int tmp;
             if (suffixCompare(i, i+1) == 1) {
                 tmp = suffixArray[i];
                 suffixArray[i] = suffixArray[i+1];
                 suffixArray[i+1] = tmp;
-=======
-        
         //バブルソート
         for (int j = mySpace.length-1; j > 0; j--) {
             for (int i = 0; i < j; i++) {
@@ -157,7 +146,6 @@ public class Frequencer implements FrequencerInterface{
                     suffixArray[i] = suffixArray[i+1];
                     suffixArray[i+1] = tmp;
                 }
->>>>>>> 913f7d2b2087cb03a0b9ef115a5cbb4c17e6b4ac
             }
             /*else if(suffixCompare(i, i+1) == -1){
 
