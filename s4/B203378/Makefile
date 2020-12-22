@@ -1,8 +1,8 @@
 all:
-	javac -encoding UTF-8 Hello.java -classpath "../.."
+	#javac -encoding UTF-8 Hello.java -classpath "../.."
 	javac -encoding UTF-8 Frequencer.java -classpath "../.."
-	javac -encoding UTF-8 InformationEstimator.java -classpath "../.."
-	javac -encoding UTF-8 TestCase.java -classpath "../.."
+	#javac -encoding UTF-8 InformationEstimator.java -classpath "../.."
+	#javac -encoding UTF-8 TestCase.java -classpath "../.."
 
 # 利用する場合は s4.学籍番号/プログラム名 になるように書き換える
 run:

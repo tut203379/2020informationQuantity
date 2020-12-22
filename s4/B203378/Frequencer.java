@@ -262,23 +262,32 @@ public class Frequencer implements FrequencerInterface{
             middle = (lower + upper)/2;
             int m = suffixArray[middle];
             int s = start;
-            
+
+            /*
+            for(int i=s;s<mySpace.length;s++)
+              System.out.println(mySpace[s]);
+            System.out.println("test");
+            */
+
             while (mySpace[m] == myTarget[s]) {
                 m++;
                 s++;
-
-                if (s > end){
-                    System.out.println(middle);
-                    return suffixArray[middle];
+                if (s == end){
+                  System.out.println(middle);
+                  //return suffixArray[middle];
                 }
             }
 
-            if (myTarget[s] < mySpace[m])
+            System.out.println("middle");
+
+            if (myTarget[s] < mySpace[m]){
                 upper = middle - 1;
-
-            else if (myTarget[s] > mySpace[m])
+                System.out.println(middle);
+              }
+            else if (myTarget[s] > mySpace[m]){
                 lower = middle + 1;
-
+                System.out.println(middle);
+              }
         }
 
         return -1;//このコードは変更しなければならない。
@@ -359,7 +368,7 @@ public class Frequencer implements FrequencerInterface{
               10:o Hi Ho
             */
 
-            frequencerObject.setTarget("H".getBytes());
+            frequencerObject.setTarget("Hi".getBytes());
             //
             // ****  Please write code to check subByteStartIndex, and subByteEndIndex
             //
