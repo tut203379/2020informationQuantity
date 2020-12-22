@@ -253,7 +253,35 @@ public class Frequencer implements FrequencerInterface{
         //
         // ここにコードを記述せよ。
         //
-        return suffixArray.length; //このコードは変更しなければならない。
+
+        int lower = 0;
+        int upper = suffixArray.length - 1;
+        int middle;
+
+        while (lower <= upper) {
+            middle = (lower + upper)/2;
+            int m = suffixArray[middle];
+            int s = start;
+            
+            while (mySpace[m] == myTarget[s]) {
+                m++;
+                s++;
+
+                if (s > end){
+                    System.out.println(middle);
+                    return suffixArray[middle];
+                }
+            }
+
+            if (myTarget[s] < mySpace[m])
+                upper = middle - 1;
+
+            else if (myTarget[s] > mySpace[m])
+                lower = middle + 1;
+
+        }
+
+        return -1;//このコードは変更しなければならない。
     }
 
     private int subByteEndIndex(int start, int end) {
