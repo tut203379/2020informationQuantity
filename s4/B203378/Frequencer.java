@@ -100,6 +100,7 @@ public class Frequencer implements FrequencerInterface{
         else if (j >= mySpace.length)
             return 1;
 
+        //
         else
             return 0; // この行は変更しなければいけない。
     }
@@ -131,12 +132,7 @@ public class Frequencer implements FrequencerInterface{
         //   suffixArray[ 2]= 0:CBA
         // のようになるべきである。
         printSuffixArray();
-        for (int i = 0; i < suffixArray.length; i++) {
-            int tmp;
-            if (suffixCompare(i, i+1) == 1) {
-                tmp = suffixArray[i];
-                suffixArray[i] = suffixArray[i+1];
-                suffixArray[i+1] = tmp;
+
         //バブルソート
         for (int j = mySpace.length-1; j > 0; j--) {
             for (int i = 0; i < j; i++) {
@@ -147,9 +143,6 @@ public class Frequencer implements FrequencerInterface{
                     suffixArray[i+1] = tmp;
                 }
             }
-            /*else if(suffixCompare(i, i+1) == -1){
-
-            }*/
         }
     }
     // ここから始まり、指定する範囲までは変更してはならないコードである。
