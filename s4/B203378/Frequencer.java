@@ -134,28 +134,51 @@ public class Frequencer implements FrequencerInterface{
         //printSuffixArray();
 
         //バブルソート
-        for (int j = mySpace.length-1; j > 0; j--) {
+        /*for (int j = mySpace.length-1; j > 0; j--) {
             for (int i = 0; i < j; i++) {
                 int tmp;
                 if (suffixCompare(suffixArray[i], suffixArray[i+1]) == 1) {
-                    /*tmp = suffixArray[i];
+                    tmp = suffixArray[i];
                     suffixArray[i] = suffixArray[i+1];
-                    suffixArray[i+1] = tmp;*/
+                    suffixArray[i+1] = tmp;
                     swap(i, i+1);
                 }
             }
-        }
-
-        //クイックソート
+        }*/
         
-
+        quickSort(0, suffixArray.length-1);
     }
 
-    public void swap (int i, int j) {
+    //クイックソート
+    public void quickSort(int left, int right) {
+        if (left < right) {
+            int middle = (left + right)/2;
+            int pivot = suffixArray[middle];
+            suffixArray[middle] = suffixArray[left];
+            int p = left;
+
+            for (int i = left + 1; i <= right; i++) {
+                if (suffixCompare(suffixArray[i], pivot) == -1) {
+                    p = p + 1;
+                    swap(p, i);
+                }
+            }
+
+            suffixArray[left] = suffixArray[p];
+            suffixArray[p] = pivot;
+
+            quickSort(left, p-1);
+            quickSort(p+1, right);
+        }
+    }
+
+    //2つの要素の入れ替え
+    public void swap(int i, int j) {
         int tmp = suffixArray[i];
         suffixArray[i] = suffixArray[j];
         suffixArray[j] = tmp;
     }
+
     // ここから始まり、指定する範囲までは変更してはならないコードである。
 
     public void setTarget(byte [] target) {
