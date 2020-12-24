@@ -77,7 +77,7 @@ public class Frequencer implements FrequencerInterface{
 
         else if (mySpace[i] > mySpace[j])
             return 1;*/
-        
+
         //1文字ずつ辞書比較(ASCII)
         while(i < mySpace.length && j < mySpace.length) {
             if (mySpace[i] < mySpace[j]) {
@@ -131,8 +131,8 @@ public class Frequencer implements FrequencerInterface{
         //   suffixArray[ 1]= 1:BA
         //   suffixArray[ 2]= 0:CBA
         // のようになるべきである。
-        printSuffixArray();
-        
+        //printSuffixArray();
+
         //バブルソート
         for (int j = mySpace.length-1; j > 0; j--) {
             for (int i = 0; i < j; i++) {
@@ -219,9 +219,23 @@ public class Frequencer implements FrequencerInterface{
         //
         // ここに比較のコードを書け
         //
-        return 0; // この行は変更しなければならない。
-    }
+        while (i < mySpace.length && mySpace[i] == myTarget[j]) {
+            i++;
+            j++;
 
+            if (j == k)
+                return 0;
+        }
+
+        if (i == mySpace.length)
+            return -1;
+
+        else if (myTarget[j] < mySpace[i])
+            return 1;
+
+        else
+            return -1;
+    }
 
     private int subByteStartIndex(int start, int end) {
         //suffix arrayのなかで、目的の文字列の出現が始まる位置を求めるメソッド
@@ -240,7 +254,6 @@ public class Frequencer implements FrequencerInterface{
            9:o
           10:o Hi Ho
         */
-
         // It returns the index of the first suffix
         // which is equal or greater than target_start_end.
     // Suppose target is set "Ho Ho Ho Ho"
@@ -253,44 +266,30 @@ public class Frequencer implements FrequencerInterface{
         //
         // ここにコードを記述せよ。
         //
-
         int lower = 0;
         int upper = suffixArray.length - 1;
         int middle;
+        int t = mySpace.length;
 
         while (lower <= upper) {
             middle = (lower + upper)/2;
             int m = suffixArray[middle];
             int s = start;
-            
-            while (s < end) {
-                System.out.println(mySpace[m]);
-                System.out.println(myTarget[s]);    
+            int cmpResult = targetCompare(suffixArray[middle], start, end);
 
-                m++;
-                s++;
-                /*if (s == end){
-                    System.out.println(suffixArray[middle]);
-                    return suffixArray[middle];
-                }*/
-            }
+            if (cmpResult == 0 || cmpResult == 1) {
+                if (cmpResult == 0)
+                    t = middle;
 
-            System.out.println("aa");
-
-            if (s == end) {
-                System.out.println(suffixArray[middle]);
-                return suffixArray[middle];
-            }
-
-            else if (myTarget[s] < mySpace[m])
                 upper = middle - 1;
+            }
 
-            else if (myTarget[s] > mySpace[m])
+            else {
                 lower = middle + 1;
-
+            }
         }
-
-        return mySpace.length;//このコードは変更しなければならない。
+        
+        return t;//このコードは変更しなければならない。
     }
 
     private int subByteEndIndex(int start, int end) {
