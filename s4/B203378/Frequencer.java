@@ -138,12 +138,23 @@ public class Frequencer implements FrequencerInterface{
             for (int i = 0; i < j; i++) {
                 int tmp;
                 if (suffixCompare(suffixArray[i], suffixArray[i+1]) == 1) {
-                    tmp = suffixArray[i];
+                    /*tmp = suffixArray[i];
                     suffixArray[i] = suffixArray[i+1];
-                    suffixArray[i+1] = tmp;
+                    suffixArray[i+1] = tmp;*/
+                    swap(i, i+1);
                 }
             }
         }
+
+        //クイックソート
+        
+
+    }
+
+    public void swap (int i, int j) {
+        int tmp = suffixArray[i];
+        suffixArray[i] = suffixArray[j];
+        suffixArray[j] = tmp;
     }
     // ここから始まり、指定する範囲までは変更してはならないコードである。
 
