@@ -321,7 +321,30 @@ public class Frequencer implements FrequencerInterface{
         //
         //　ここにコードを記述せよ
         //
-        return suffixArray.length; // この行は変更しなければならない、
+        int lower = 0;
+        int upper = suffixArray.length - 1;
+        int middle;
+        int t = mySpace.length;
+
+        while (lower <= upper) {
+            middle = (lower + upper)/2;
+            int m = suffixArray[middle];
+            int s = start;
+            int cmpResult = targetCompare(suffixArray[middle], start, end);
+
+            if (cmpResult == -1 || cmpResult == 0) {
+                if (cmpResult == 0)
+                    t = middle;
+
+                lower = middle + 1;
+            }
+
+            else {
+                upper = middle - 1;
+            }
+        }
+        
+        return t + 1;//このコードは変更しなければならない。
     }
 
 
