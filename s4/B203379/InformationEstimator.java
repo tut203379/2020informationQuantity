@@ -48,10 +48,10 @@ public class InformationEstimator implements InformationEstimatorInterface {
 
     @Override
     public double estimation(){
-        if (myTarget.length == 0 || myTarget == null)
+        if (myTarget == null || myTarget.length == 0)
             return 0.0;
 
-        if (mySpace.length == 0 || mySpace == null)
+        if (mySpace == null || mySpace.length == 0 )
             return Double.MAX_VALUE;
 
         double [] iqResult = new double[myTarget.length];
